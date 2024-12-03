@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.itheima.student.mapper.StudentMapper">
+
+
+    <update id="save">
+        <if test="studentId != null and studentId != ''">
+        <if test="studentName != null and studentName != ''">
+        INSERT INTO sc (student_id, student_name) VALUES (#{studentId}, #{studentName})
+        </if>
+        </if>
+    </update>
+
+    <update id="update">
+        UPDATE sc
+        <set>
+            <if test="subject == 'e1'"> e1 = #{score}, </if>
+            <if test="subject == 'e2'"> e2 = #{score}, </if>
+            <if test="subject == 'e3'"> e3 = #{score}, </if>
+            <if test="subject == 'calculus1_1'"> calculus1_1 = #{score}, </if>
+            <if test="subject == 'calculus1_2'"> calculus1_2 = #{score}, </if>
+            <if test="subject == 'linearAlgebra'"> linearAlgebra = #{score}, </if>
+            <if test="subject == 'physics'"> physics = #{score}, </if>
+            <if test="subject == 'introInfoTech'"> introInfoTech = #{score}, </if>
+            <if test="subject == 'advancedProgramDesign'"> advancedProgramDesign = #{score}, </if>
+            <if test="subject == 'advancedProgramDesignLab'"> advancedProgramDesignLab = #{score}, </if>
+            <if test="subject == 'objectOrientedProgramming'"> objectOrientedProgramming = #{score}, </if>
+            <if test="subject == 'computerArchitecture'"> computerArchitecture = #{score}, </if>
+            <if test="subject == 'discreteMath'"> discreteMath = #{score}, </if>
+            <if test="subject == 'assemblyLanguage'"> assemblyLanguage = #{score}, </if>
+            <if test="subject == 'assemblyLanguageLab'"> assemblyLanguageLab = #{score}, </if>
+            <if test="subject == 'programmingTraining'"> programmingTraining = #{score}, </if>
+            <if test="subject == 'computerArchitectureDesign'"> computerArchitectureDesign = #{score}, </if>
+            <if test="subject == 'digitalSystemsLogicDesign'"> digitalSystemsLogicDesign = #{score}, </if>
+            <if test="subject == 'digitalSystemsLogicLab'"> digitalSystemsLogicLab = #{score}, </if>
+            <if test="subject == 'javaProgramDesign'"> javaProgramDesign = #{score}, </if>
+            <if test="subject == 'computerProfessionRecognition'"> computerProfessionRecognition = #{score}, </if>
+            <if test="subject == 'moralAndLegalEducation'"> moralAndLegalEducation = #{score}, </if>
+            <if test="subject == 'modernChineseHistory'"> modernChineseHistory = #{score}, </if>
+            <if test="subject == 'marxistPrinciple'"> marxistPrinciple = #{score}, </if>
+            <if test="subject == 'maozedongThought'"> maozedongThought = #{score}, </if>
+            <if test="subject == 'guizhouProvincialConditions'"> guizhouProvincialConditions = #{score}, </if>
+            <if test="subject == 'physicalEducation'"> physicalEducation = #{score}, </if>
+            <if test="subject == 'careerPlanning'"> careerPlanning = #{score}, </if>
+            <if test="subject == 'militaryTheoryTraining'"> militaryTheoryTraining = #{score}, </if>
+            <if test="subject == 'collegeMentalHealth'"> collegeMentalHealth = #{score}, </if>
+        </set>
+        WHERE student_id = #{studentId}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM sc WHERE
+        <if test="studentId != null and studentId != ''">
+        student_id = #{studentId}
+        </if>
+    </delete>
+
+    <select id="pageQuery" resultType="com.itheima.student.vo.PageQueryVO">
+        SELECT student_id, student_name FROM sc
+            <where>
+            <if test="studentName != null and studentName != ''">
+                 student_name LIKE CONCAT('%', #{studentName}, '%')
+            </if>
+         </where>
+<!--            <if test="studentId != null and studentId != ''">-->
+<!--                AND student_id = #{studentId}-->
+<!--            </if>-->
+<!--            </where>-->
+
+--         order by student_id
+    </select>
+
+    <select id="pageScoreSubject" resultType="com.itheima.student.vo.PageQueryScoreVO">
+        SELECT student_id, student_name,
+        <if test="subject == 'e1'">
+            e1
+        </if>
+        <if test="subject == 'e2'">
+            e2
+        </if>
+        <if test="subject == 'e3'">
+            e3
+        </if>
+        <if test="subject == 'calculus1_1'">
+            calculus1_1
+        </if>
+        <if test="subject == 'calculus1_2'">
+            calculus1_2
+        </if>
+        <if test="subject == 'linear_algebra'">
+            linear_algebra
+        </if>
+        <if test="subject == 'physics'">
+            physics
+        </if>
+        <if test="subject == 'intro_info_tech'">
+            intro_info_tech
+        </if>
+        <if test="subject == 'advanced_program_design'">
+            advanced_program_design
+        </if>
+        <if test="subject == 'advanced_program_design_lab'">
+            advanced_program_design_lab
+        </if>
+        <if test="subject == 'object_oriented_programming'">
+            object_oriented_programming
+        </if>
+        <if test="subject == 'computer_architecture'">
+            computer_architecture
+        </if>
+        <if test="subject == 'discrete_math'">
+            discrete_math
+        </if>
+        <if test="subject == 'assembly_language'">
+            assembly_language
+        </if>
+        <if test="subject == 'assembly_language_lab'">
+            assembly_language_lab
+        </if>
+        <if test="subject == 'programming_training'">
+            programming_training
+        </if>
+        <if test="subject == 'computer_architecture_design'">
+            computer_architecture_design
+        </if>
+        <if test="subject == 'digital_systems_logic_design'">
+            digital_systems_logic_design
+        </if>
+        <if test="subject == 'digital_systems_logic_lab'">
+            digital_systems_logic_lab
+        </if>
+        <if test="subject == 'java_program_design'">
+            java_program_design
+        </if>
+        <if test="subject == 'computer_profession_recognition'">
+            computer_profession_recognition
+        </if>
+        <if test="subject == 'moral_and_legal_education'">
+            moral_and_legal_education
+        </if>
+        <if test="subject == 'modern_chinese_history'">
+            modern_chinese_history
+        </if>
+        <if test="subject == 'marxist_principle'">
+            marxist_principle
+        </if>
+        <if test="subject == 'maozedong_thought'">
+            maozedong_thought
+        </if>
+        <if test="subject == 'guizhou_provincial_conditions'">
+            guizhou_provincial_conditions
+        </if>
+        <if test="subject == 'physical_education'">
+            physical_education
+        </if>
+        <if test="subject == 'career_planning'">
+            career_planning
+        </if>
+        <if test="subject == 'military_theory_training'">
+            military_theory_training
+        </if>
+        <if test="subject == 'college_mental_health'">
+            college_mental_health
+        </if>
+        as score
+        FROM sc
+        ORDER BY
+        <if test="subject == 'e1'">
+            e1
+        </if>
+        <if test="subject == 'e2'">
+            e2
+        </if>
+        <if test="subject == 'e3'">
+            e3
+        </if>
+        <if test="subject == 'calculus1_1'">
+            calculus1_1
+        </if>
+        <if test="subject == 'calculus1_2'">
+            calculus1_2
+        </if>
+        <if test="subject == 'linear_algebra'">
+            linear_algebra
+        </if>
+        <if test="subject == 'physics'">
+            physics
+        </if>
+        <if test="subject == 'intro_info_tech'">
+            intro_info_tech
+        </if>
+        <if test="subject == 'advanced_program_design'">
+            advanced_program_design
+        </if>
+        <if test="subject == 'advanced_program_design_lab'">
+            advanced_program_design_lab
+        </if>
+        <if test="subject == 'object_oriented_programming'">
+            object_oriented_programming
+        </if>
+        <if test="subject == 'computer_architecture'">
+            computer_architecture
+        </if>
+        <if test="subject == 'discrete_math'">
+            discrete_math
+        </if>
+        <if test="subject == 'assembly_language'">
+            assembly_language
+        </if>
+        <if test="subject == 'assembly_language_lab'">
+            assembly_language_lab
+        </if>
+        <if test="subject == 'programming_training'">
+            programming_training
+        </if>
+        <if test="subject == 'computer_architecture_design'">
+            computer_architecture_design
+        </if>
+        <if test="subject == 'digital_systems_logic_design'">
+            digital_systems_logic_design
+        </if>
+        <if test="subject == 'digital_systems_logic_lab'">
+            digital_systems_logic_lab
+        </if>
+        <if test="subject == 'java_program_design'">
+            java_program_design
+        </if>
+        <if test="subject == 'computer_profession_recognition'">
+            computer_profession_recognition
+        </if>
+        <if test="subject == 'moral_and_legal_education'">
+            moral_and_legal_education
+        </if>
+        <if test="subject == 'modern_chinese_history'">
+            modern_chinese_history
+        </if>
+        <if test="subject == 'marxist_principle'">
+            marxist_principle
+        </if>
+        <if test="subject == 'maozedong_thought'">
+            maozedong_thought
+        </if>
+        <if test="subject == 'guizhou_provincial_conditions'">
+            guizhou_provincial_conditions
+        </if>
+        <if test="subject == 'physical_education'">
+            physical_education
+        </if>
+        <if test="subject == 'career_planning'">
+            career_planning
+        </if>
+        <if test="subject == 'military_theory_training'">
+            military_theory_training
+        </if>
+        <if test="subject == 'college_mental_health'">
+            college_mental_health
+        </if>
+        DESC
+
+
+    </select>
+    <select id="pageScoreSum" resultType="com.itheima.student.vo.PageQueryScoreVO">
+        SELECT student_id, student_name,
+               SUM(e1 + e2 + e3 + calculus1_1 + calculus1_2 + linear_algebra +
+                   physics + intro_info_tech + advanced_program_design +
+                   advanced_program_design_lab + object_oriented_programming +
+                   computer_architecture + discrete_math + assembly_language +
+                   assembly_language_lab + programming_training + computer_architecture_design +
+                   digital_systems_logic_design + digital_systems_logic_lab +
+                   java_program_design + computer_profession_recognition +
+                   moral_and_legal_education + modern_chinese_history +
+                   marxist_principle + maozedong_thought +
+                   guizhou_provincial_conditions +
+                   physical_education + career_planning +
+                   military_theory_training + college_mental_health) AS score
+        FROM sc
+        GROUP BY student_id, student_name
+        ORDER BY SUM(e1 + e2 + e3 + calculus1_1 + calculus1_2 + linear_algebra +
+                     physics + intro_info_tech + advanced_program_design +
+                     advanced_program_design_lab + object_oriented_programming +
+                     computer_architecture + discrete_math + assembly_language +
+                     assembly_language_lab + programming_training + computer_architecture_design +
+                     digital_systems_logic_design + digital_systems_logic_lab +
+                     java_program_design + computer_profession_recognition +
+                     moral_and_legal_education + modern_chinese_history +
+                     marxist_principle + maozedong_thought +
+                     guizhou_provincial_conditions +
+                     physical_education + career_planning +
+                     military_theory_training + college_mental_health) DESC
+
+
+    </select>
+    <select id="pageAvgScore" resultType="com.itheima.student.vo.PageQueryScoreVO">
+        SELECT student_id, student_name,
+               FLOOR(AVG(e1 + e2 + e3 + calculus1_1 + calculus1_2 + linear_algebra +
+                   physics + intro_info_tech + advanced_program_design +
+                   advanced_program_design_lab + object_oriented_programming +
+                   computer_architecture + discrete_math + assembly_language +
+                   assembly_language_lab + programming_training +
+                   computer_architecture_design + digital_systems_logic_design +
+                   digital_systems_logic_lab + java_program_design +
+                   computer_profession_recognition + moral_and_legal_education + modern_chinese_history +
+                   marxist_principle + maozedong_thought + guizhou_provincial_conditions + physical_education +
+                   career_planning + military_theory_training + college_mental_health)/30)
+                   AS score FROM sc
+        GROUP BY student_id, student_name
+        ORDER BY score DESC
+    </select>
+</mapper>
