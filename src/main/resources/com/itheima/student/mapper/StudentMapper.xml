@@ -23,31 +23,31 @@
             <if test="subject == 'e3'"> e3 = #{score}, </if>
             <if test="subject == 'calculus1_1'"> calculus1_1 = #{score}, </if>
             <if test="subject == 'calculus1_2'"> calculus1_2 = #{score}, </if>
-            <if test="subject == 'linearAlgebra'"> linearAlgebra = #{score}, </if>
+            <if test="subject == 'linear_algebra'"> linear_algebra = #{score}, </if>
             <if test="subject == 'physics'"> physics = #{score}, </if>
-            <if test="subject == 'introInfoTech'"> introInfoTech = #{score}, </if>
-            <if test="subject == 'advancedProgramDesign'"> advancedProgramDesign = #{score}, </if>
-            <if test="subject == 'advancedProgramDesignLab'"> advancedProgramDesignLab = #{score}, </if>
-            <if test="subject == 'objectOrientedProgramming'"> objectOrientedProgramming = #{score}, </if>
-            <if test="subject == 'computerArchitecture'"> computerArchitecture = #{score}, </if>
-            <if test="subject == 'discreteMath'"> discreteMath = #{score}, </if>
-            <if test="subject == 'assemblyLanguage'"> assemblyLanguage = #{score}, </if>
-            <if test="subject == 'assemblyLanguageLab'"> assemblyLanguageLab = #{score}, </if>
-            <if test="subject == 'programmingTraining'"> programmingTraining = #{score}, </if>
-            <if test="subject == 'computerArchitectureDesign'"> computerArchitectureDesign = #{score}, </if>
-            <if test="subject == 'digitalSystemsLogicDesign'"> digitalSystemsLogicDesign = #{score}, </if>
-            <if test="subject == 'digitalSystemsLogicLab'"> digitalSystemsLogicLab = #{score}, </if>
-            <if test="subject == 'javaProgramDesign'"> javaProgramDesign = #{score}, </if>
-            <if test="subject == 'computerProfessionRecognition'"> computerProfessionRecognition = #{score}, </if>
-            <if test="subject == 'moralAndLegalEducation'"> moralAndLegalEducation = #{score}, </if>
-            <if test="subject == 'modernChineseHistory'"> modernChineseHistory = #{score}, </if>
-            <if test="subject == 'marxistPrinciple'"> marxistPrinciple = #{score}, </if>
-            <if test="subject == 'maozedongThought'"> maozedongThought = #{score}, </if>
-            <if test="subject == 'guizhouProvincialConditions'"> guizhouProvincialConditions = #{score}, </if>
-            <if test="subject == 'physicalEducation'"> physicalEducation = #{score}, </if>
-            <if test="subject == 'careerPlanning'"> careerPlanning = #{score}, </if>
-            <if test="subject == 'militaryTheoryTraining'"> militaryTheoryTraining = #{score}, </if>
-            <if test="subject == 'collegeMentalHealth'"> collegeMentalHealth = #{score}, </if>
+            <if test="subject == 'intro_info_tech'"> intro_info_tech = #{score}, </if>
+            <if test="subject == 'advanced_program_design'"> advanced_program_design = #{score}, </if>
+            <if test="subject == 'advanced_program_design_lab'"> advanced_program_design_lab = #{score}, </if>
+            <if test="subject == 'object_oriented_programming'"> object_oriented_programming = #{score}, </if>
+            <if test="subject == 'computer_architecture'"> computer_architecture = #{score}, </if>
+            <if test="subject == 'discrete_math'"> discrete_math = #{score}, </if>
+            <if test="subject == 'assembly_language'"> assembly_language = #{score}, </if>
+            <if test="subject == 'assembly_language_lab'"> assembly_language_lab = #{score}, </if>
+            <if test="subject == 'programming_training'"> programming_training = #{score}, </if>
+            <if test="subject == 'computer_architecture_design'"> computer_architecture_design = #{score}, </if>
+            <if test="subject == 'digital_systems_logic_design'"> digital_systems_logic_design = #{score}, </if>
+            <if test="subject == 'digital_systems_logic_lab'"> digital_systems_logic_lab = #{score}, </if>
+            <if test="subject == 'java_program_design'"> java_program_design = #{score}, </if>
+            <if test="subject == 'computer_profession_recognition'"> computer_profession_recognition = #{score}, </if>
+            <if test="subject == 'moral_and_legal_education'"> moral_and_legal_education = #{score}, </if>
+            <if test="subject == 'modern_chinese_history'"> modern_chinese_history = #{score}, </if>
+            <if test="subject == 'marxist_principle'"> marxist_principle = #{score}, </if>
+            <if test="subject == 'maozedong_thought'"> maozedong_thought = #{score}, </if>
+            <if test="subject == 'guizhou_provincial_conditions'"> guizhou_provincial_conditions = #{score}, </if>
+            <if test="subject == 'physical_education'"> physical_education = #{score}, </if>
+            <if test="subject == 'career_planning'"> career_planning = #{score}, </if>
+            <if test="subject == 'military_theory_training'"> military_theory_training = #{score}, </if>
+            <if test="subject == 'college_mental_health'"> college_mental_health = #{score}, </if>
         </set>
         WHERE student_id = #{studentId}
     </update>
@@ -309,5 +309,10 @@
                    AS score FROM sc
         GROUP BY student_id, student_name
         ORDER BY score DESC
+    </select>
+
+
+    <select id="get" resultType="com.itheima.student.vo.StudentVO">
+        SELECT * FROM sc WHERE student_id = #{studentId}
     </select>
 </mapper>

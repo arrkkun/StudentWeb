@@ -12,6 +12,7 @@ import com.itheima.student.result.PageResult;
 import com.itheima.student.service.StudentService;
 import com.itheima.student.vo.PageQueryScoreVO;
 import com.itheima.student.vo.PageQueryVO;
+import com.itheima.student.vo.StudentVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -78,5 +79,10 @@ public class StudentServicelmpl implements StudentService {
         long total = page.getTotal();
         List<PageQueryScoreVO> result = page.getResult();
         return new PageResult(total, result);
+    }
+
+    @Override
+    public StudentVO get(String id) {
+        return studentMapper.get(id);
     }
 }

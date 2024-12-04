@@ -6,6 +6,7 @@ import com.itheima.student.dto.ScoreUpdateDTO;
 import com.itheima.student.dto.StudentSaveDTO;
 import com.itheima.student.entity.Student;
 import com.itheima.student.result.PageResult;
+import com.itheima.student.vo.StudentVO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,4 +26,6 @@ public interface StudentService {
     PageResult pageScoreSum(PageQueryDTO pageQueryDTO);
 
     PageResult pageAvgScore(PageQueryDTO pageQueryDTO);
+
+    StudentVO get(String id);
 }

@@ -7,6 +7,7 @@ import com.itheima.student.dto.StudentSaveDTO;
 import com.itheima.student.entity.Student;
 import com.itheima.student.result.PageResult;
 import com.itheima.student.result.Result;
+import com.itheima.student.vo.StudentVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -65,6 +66,18 @@ public class StudentController {
         log.info("修改学生成绩,student={}",scoreUpdateDTO);
         studentService.update(scoreUpdateDTO);
         return Result.success();
+    }
+
+    /**
+     * 查询学生信息
+     * @param id
+     * @returnq
+     */
+    @GetMapping("/{id}")
+    public Result<StudentVO> get(@PathVariable String id){
+        log.info("查询学生信息,id={}",id);
+        StudentVO student = studentService.get(id);
+        return Result.success(student);
     }
 
 }

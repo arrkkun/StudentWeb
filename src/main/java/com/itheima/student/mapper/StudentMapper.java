@@ -5,8 +5,10 @@ import com.itheima.student.dto.PageQueryDTO;
 import com.itheima.student.dto.PageQueryScoreDTO;
 import com.itheima.student.dto.ScoreUpdateDTO;
 import com.itheima.student.dto.StudentSaveDTO;
+import com.itheima.student.entity.Student;
 import com.itheima.student.vo.PageQueryScoreVO;
 import com.itheima.student.vo.PageQueryVO;
+import com.itheima.student.vo.StudentVO;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
@@ -57,4 +59,12 @@ public interface StudentMapper {
       * @return
       */
      Page<PageQueryScoreVO> pageAvgScore(PageQueryDTO pageQueryDTO);
+
+     /**
+      * 根据id查询学生信息
+      * @param studentId
+      * @return
+      */
+     StudentVO get(String studentId);
+
 }
